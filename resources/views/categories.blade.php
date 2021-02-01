@@ -50,7 +50,7 @@
 <div class="container">
     <div class="starter-template">
                                     <div class="panel">
-            <a href="http://internet-shop.tmweb.ru/mobiles">
+            <a href="/public/mobiles">
                 <img src="http://internet-shop.tmweb.ru/storage/categories/mobile.jpg">
                 <h2>Мобильные телефоны</h2>
             </a>
@@ -59,7 +59,7 @@
             </p>
         </div>
             <div class="panel">
-            <a href="http://internet-shop.tmweb.ru/portable">
+            <a href="/public/portable">
                 <img src="http://internet-shop.tmweb.ru/storage/categories/portable.jpg">
                 <h2>Портативная техника</h2>
             </a>
@@ -68,7 +68,7 @@
             </p>
         </div>
             <div class="panel">
-            <a href="http://internet-shop.tmweb.ru/appliances">
+            <a href="/public/appliances">
                 <img src="http://internet-shop.tmweb.ru/storage/categories/appliance.jpg">
                 <h2>Бытовая техника</h2>
             </a>
