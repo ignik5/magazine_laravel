@@ -11,6 +11,7 @@ return Category::find($this->category_id);
 
     }
     public function category(){
-        return $this->beLongsTo(Category::class);
+       
+     return $this->beLongsTo(Category::class);
     }
 }
