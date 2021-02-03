@@ -12,8 +12,26 @@ class BasketController extends Controller
         $order=Order::findOrFail($orderid);
         return view('basket' ,compact('order'));
     }
+    public function basketconfirs(Request $request){
+        $orderid = session('orderid');
+        if (is_null($orderid)){
+          return redirect()->route('index');
+        }
+        $order = Order::find($orderid);
+        $order->name = $request->name;
+        $order->phone = $request->phone;
+        $order->status=1;
+        $order->save();
+        session()->forget('orderid');
+        return redirect()->route('index');
+    }
     public function basketplace(){
-        return view('order');
+        $orderid = session('orderid');
+        if (is_null($orderid)){
+          return redirect()->route('index');
+        }
+        $order = Order::find($orderid);
+        return view('basketplace', compact('order'));
     }
     public function basketadd($productid){
         $orderid = session('orderid');

@@ -1,11 +1,9 @@
-@extends('master')
+@extends('layouts.master')
 @section('title','Корзина')
 @section('content')
-    <div class="starter-template">
+  
       
-        
-        <div class="container">
-            <div class="starter-template">
+      
                             <p class="alert alert-success">Добавлен товар iPhone X 64GB</p>
                                     <h1>Корзина</h1>
             <p>Оформление заказа</p>
@@ -52,20 +50,10 @@
                 </table>
                 <br>
                 <div class="btn-group pull-right" role="group">
-                    <a type="button" class="btn btn-success" href="{{route(basketplace)}}">Оформить заказ</a>
+                    <a type="button" class="btn btn-success" href="{{route('basketplace')}}">Оформить заказ</a>
                 </div>
             </div>
             </div>
-   
-        
-
-
-
-
-
-
-
-
          </div>
-</div>
+
 @endsection

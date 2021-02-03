@@ -1,8 +1,8 @@
-@extends('master')
+@extends('layouts.master')
 
 @section('title','Товары')
 @section('content')
-    <div class="starter-template">
+    
                            <h1>{{$product->name}}</h1>
     <h2>{{$category->name}}</h2>
     <p>Цена: <b>{{$product->price}}</b></p>
@@ -14,5 +14,5 @@
 
             <input type="hidden" name="_token" value="6afv06B52wKMGwrEHeg2Y3VkbFoU8uX2nu2IUgSh">        </form>
         </div>
-</div>
+
 @endsection

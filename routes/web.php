@@ -10,6 +10,7 @@ Route::post('/basket/add/{id}', 'BasketController@basketadd' )->name('basketadd'
 Route::post('/basket/remov/{id}', 'BasketController@basketremov' )->name('basketremov');
 
 
+Route::post('/basket/place','BasketController@basketconfirs')->name('basketconfirs');
 
 Route::get('/{category}', 'maincontroller@category')->name('category');
 
