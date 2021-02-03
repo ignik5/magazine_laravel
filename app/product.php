@@ -14,4 +14,10 @@ return Category::find($this->category_id);
        
      return $this->beLongsTo(Category::class);
     }
+    public function getprice(){
+        if (!is_null($this->pivot)){
+            return $this->pivot->count*$this->price;
+        }
+    return $this->price;
+    }
 }

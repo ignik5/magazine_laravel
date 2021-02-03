@@ -29,29 +29,30 @@
                                    {{$product->name}}
                                 </a>
                             </td>
-                            <td><span class="badge">1</span>
+                            <td><span class="badge">{{$product->pivot->count}}</span>
 
                                 <div class="btn-group form-inline">
-                                    <a type="button" href="http://internet-shop.tmweb.ru/basket/remove/1" 
-                                   class="btn btn-danger" ><span
-                                                class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
+                                    <form action="{{route('basketremov',$product)}}" method="POST">
+                                    <button type="submit" class="btn btn-danger" ><span
+                                                class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                                            </button> @csrf </form>
                                                 <form action="{{route('basketadd',$product)}}" method="POST">
                                    <button type="submit"class="btn btn-success" ><span
-                                                             class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
-                                               @csrf </form>   </div>
+                                                             class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                                            </button>  @csrf </form>   </div>
                             </td>
                             <td>{{$product->price}}</td>
-                            <td>{{$product->price}}</td>
+                            <td>{{$product->getprice()}}</td>
                         </tr> @endforeach
                                 <tr>
                         <td colspan="3">Общая стоимость:</td>
-                        <td>71990 ₽</td>
+                        <td>{{$order->fullprice()}} ₽</td>
                     </tr>
                     </tbody>
                 </table>
                 <br>
                 <div class="btn-group pull-right" role="group">
-                    <a type="button" class="btn btn-success" href="http://internet-shop.tmweb.ru/basket/place">Оформить заказ</a>
+                    <a type="button" class="btn btn-success" href="{{route(basketplace)}}">Оформить заказ</a>
                 </div>
             </div>
             </div>

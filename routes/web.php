@@ -7,6 +7,7 @@ Route::get('/categories', 'maincontroller@categories')->name('categories');
 Route::get('/basket','BasketController@basket')->name('basket');
 Route::get('/basket/place','BasketController@basketplace')->name('basketplace');
 Route::post('/basket/add/{id}', 'BasketController@basketadd' )->name('basketadd');
+Route::post('/basket/remov/{id}', 'BasketController@basketremov' )->name('basketremov');
 
 
 
