@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Order;
+use App\product;
 
 class BasketController extends Controller
 {
@@ -21,8 +22,16 @@ class BasketController extends Controller
         $order->name = $request->name;
         $order->phone = $request->phone;
         $order->status=1;
-        $order->save();
-        session()->forget('orderid');
+       
+        $success = $order->save(); 
+        
+        if($success){
+            session()->forget('orderid');
+            session()->flash('success', 'Ваш заказ принят в обработку');
+        }
+        else{
+            session()->flash('warтing', 'Случилось ошибка');
+        }
         return redirect()->route('index');
     }
     public function basketplace(){
@@ -49,7 +58,9 @@ class BasketController extends Controller
         }else{
             $order->products()->attach($productid);
         }
+        $product=product::find($productid);
       
+        session()->flash('success', 'Добавлен товар  '.$product->name);
    
         return redirect()->route('basket');
     }
@@ -73,7 +84,7 @@ class BasketController extends Controller
             }
          
                 }
-
+                session()->flash('warning', 'Товар удален  ');
         
                 return redirect()->route('basket');
 
