@@ -1,7 +1,13 @@
 @extends('auth.layouts.master')
 @section('title', 'Регистрация')
 @section('content')
-    
+<div class="col-md-8">
+    <div class="card">
+        
+ 
+        <div class="card-header">Регистрация</div> 
+        
+        
             <form method="POST" action="{{route('register')}}" aria-label="Register">
                 @csrf               <div class="form-group row">
                     <label for="name" class="col-md-4 col-form-label text-md-right">Имя</label>
@@ -51,6 +57,8 @@
                     </div>
                 </div>
             </form>
-          
+            <div class="card-body">  </div>
+    </div>
+</div>
 
             @endsection

@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\product;
+use App\User;
 class Order extends Model
 {
    public function products(){
@@ -16,6 +17,9 @@ $sum+=$product->getprice();
        }
        return($sum);
       
+   }
+   public function user(){
+       return $this->belongsTo(User::class);
    }
  public function saveorder($name, $phone){
      if ($this->status==0){

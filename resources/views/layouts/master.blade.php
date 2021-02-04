@@ -44,7 +44,7 @@
                                     <li><a href="{{route('login')}}">Войти</a></li>
                                     @endguest
                                     @auth
-                                    <li><a href="{{route('home')}}">Панель администратора</a></li>
+                                    <li><a href="{{route('order')}}">Панель администратора</a></li>
                 
                                     <li>
                                         <a href="{{route('get-logout')}}">Выход</a></li>

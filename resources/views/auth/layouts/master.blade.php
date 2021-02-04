@@ -9,9 +9,9 @@
   
     <title>Админка:@yield('title')</title>
 
-    <!-- Scripts -->
-    <script src="/js/app.js" defer></script>
-
+    
+    <script src="/public/js/app.js" defer></script>
+ 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
@@ -33,14 +33,51 @@
                 <ul class="nav navbar-nav">
                                     </ul>
 
-                                    <ul class="nav navbar-nav navbar-right">
+    
+
+ @guest
+                    
+                 <ul class="nav navbar-nav navbar-right">
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('login')}}">Войти</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('register')}}">Зарегистрироваться</a>
                         </li>
-                    </ul>
+                        </ul>
+ @endguest
+ @auth
+ 
+ <ul class="nav navbar-nav navbar-right">   
+      <li class="nav-item dropdown">
+    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+        {{ Auth::user()->name }} 
+    </a>
+
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+        
+        <a class="dropdown-item" href="{{ route('logout') }}"
+           onclick="event.preventDefault();
+                         document.getElementById('logout-form').submit();">
+            {{ __('Logout') }}
+        </a>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
+    </div>
+</li>
+        @endauth
+</ul>
+
+
+
+
+
+
+
+
+
                 
                             </div>
         </div>
@@ -49,16 +86,9 @@
     <div class="py-4">
         <div class="container">
             <div class="row justify-content-center">
-                    <div class="col-md-8">
-        <div class="card">
-            
-     
-            <div class="card-header">@yield('title')</div> 
-            
-                @yield('content')<div class="card-body">
-            </div>
-        </div>
-    </div>
+    
+                          @yield('content')
+                     
             </div>
         </div>
     </div>

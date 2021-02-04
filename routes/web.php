@@ -6,7 +6,18 @@ Auth::routes([
 ]);
 Route::get('logout','Auth\LoginController@logout')->name('get-logout');
 Route::get('/', 'maincontroller@index')->name('index');
-Route::get('home','HomeController@index')->name('home');
+Route::group([
+    'middleware'=>'auth',
+    'namespace'=>'Admin'
+
+],function(){
+    
+Route::get('order','OrderController@index')->name('order');
+});
+
+
+
+
 Route::get('/categories', 'maincontroller@categories')->name('categories');
 
 Route::get('/basket','BasketController@basket')->name('basket');
