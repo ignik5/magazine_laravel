@@ -27,12 +27,14 @@ Route::get('logout','Auth\LoginController@logout')->name('get-logout');
 Route::get('/', 'maincontroller@index')->name('index');
 Route::group([
     'middleware'=>'auth',
-    'namespace'=>'Admin'
+    'namespace'=>'Admin',
+    'prefix'=>'admin'
 
 ],function(){
     Route::group(['middleware'=>'is_admin'],function(){
 Route::get('order','OrderController@index')->name('order');
 });
+Route::resource('categories', 'CategoryController');
 });
 
 
