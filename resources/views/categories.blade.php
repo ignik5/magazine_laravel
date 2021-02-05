@@ -8,7 +8,11 @@
                                             
                                         
             <a href="/public/{{$category->code}}">
-                <img src="http://internet-shop.tmweb.ru/storage/categories/mobile.jpg">
+                @if($category->image!=null)
+                <img src="{{ Storage::url($category->image) }}" height="240px">
+                @else
+                <img src="http://internet-shop.tmweb.ru/storage/products/iphone_x.jpg">
+                @endif
                 <h2>{{$category->name}}</h2>
             </a>
             <p>

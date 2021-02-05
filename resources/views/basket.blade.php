@@ -22,7 +22,11 @@
                                    <tr>
                             <td>
                                 <a href="{{route('product',[$product->category->code,$product->code])}}">
+                                     @if($product->image!=null)
+                                    <img height="56px" src="{{ Storage::url($product->image) }}" height="240px">
+                                    @else
                                     <img height="56px" src="http://internet-shop.tmweb.ru/storage/products/iphone_x.jpg">
+                                    @endif
                                    {{$product->name}}
                                 </a>
                             </td>

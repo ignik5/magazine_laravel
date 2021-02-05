@@ -35,6 +35,8 @@ Route::group([
 Route::get('order','OrderController@index')->name('order');
 });
 Route::resource('categories', 'CategoryController');
+
+Route::resource('products', 'productController');
 });
 
 
