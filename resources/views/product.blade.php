@@ -12,11 +12,11 @@
     <img src="http://internet-shop.tmweb.ru/storage/products/iphone_x.jpg">
     @endif
     <p>{{$product->description}}</p>
-
-            <form action="http://internet-shop.tmweb.ru/basket/add/1" method="POST">
-            <button type="submit" class="btn btn-success" role="button">Добавить в корзину</button>
-
-            <input type="hidden" name="_token" value="6afv06B52wKMGwrEHeg2Y3VkbFoU8uX2nu2IUgSh">        </form>
+    <form action="{{route('basketadd',$product)}}" method="post">
+        <button type="submit"  class="btn btn-success" role="button">В корзину</button> 
+        
+     @csrf
+         </form>
         </div>
 
 @endsection
