@@ -44,8 +44,7 @@ Route::resource('products', 'productController');
 Route::get('/categories', 'maincontroller@categories')->name('categories');
 
 
-
-Route::get('/{category}/{product?}','maincontroller@product')->name('product');
-
 Route::get('/{category}', 'maincontroller@category')->name('category');
  
+
+Route::get('/{category}/{product?}','maincontroller@product')->name('product');

@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\product;
 class Category extends Model
 {
     protected $fillable=['code','name','image','description'];

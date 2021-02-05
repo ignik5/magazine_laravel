@@ -10,7 +10,7 @@
         {{$category->description}} </p>
     <div class="row">
         @foreach ($category->products as $product)
-        @include('layouts.card',compact('$product'))
+        @include('layouts.card',compact('product'))
         @endforeach
     
 </div>

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class BasketController extends Controller
 {
     public function basket()
-    {
+    { 
         $orderid = session('orderid');
         if (!is_null($orderid)) {
             $order = Order::findOrFail($orderid);
