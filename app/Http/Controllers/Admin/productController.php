@@ -8,6 +8,7 @@ use App\Category;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use App\Http\Requests\productrequest;
 
 class productController extends Controller
 {
@@ -37,10 +38,10 @@ class productController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\productrequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(productrequest $request)
     {
          
         $path = $request->file('image')->store('product');
@@ -78,11 +79,11 @@ class productController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\productrequest  $request
      * @param  \App\product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, product $product)
+    public function update(productrequest $request, product $product)
     {
 
 

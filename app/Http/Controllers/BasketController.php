@@ -7,6 +7,8 @@ use App\product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use App\Http\Requests\basketrequest;
+
 class BasketController extends Controller
 {
     public function basket()
@@ -18,7 +20,7 @@ class BasketController extends Controller
         return view('basket', compact('order'));
     }
 
-    public function basketconfirs(Request $request)
+    public function basketconfirs(basketrequest $request)
     {
         $orderid = session('orderid');
         if (is_null($orderid)){
