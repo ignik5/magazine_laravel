@@ -8,7 +8,7 @@
 
 
 @foreach ($products as $product)
-@include('layouts.card',compact('$product'))
+@include('layouts.card',compact('product'))
 @endforeach
 
 

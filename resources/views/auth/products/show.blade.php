@@ -41,7 +41,18 @@
                 <td>Категория</td>
                 <td>{{ $product->category->name }}</td>
             </tr>
-           
+            <tr><td>Лейблы</td><td>
+                @if($product->isnew())
+                <span class="badge badge-success">Новинка</span>
+                @endif
+                @if($product->isrecommend())
+                <span class="badge badge-warning">Рекомендуем</span>
+                @endif
+                @if($product->ishit())
+                <span class="badge badge-danger">Хит продаж</span>
+                @endif
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>

@@ -37,6 +37,7 @@ class productrequest extends FormRequest
             $rules['code'] .=',' .$this->route()->parameter('product')->id;
         }
         return $rules;
+        
        
     }
    

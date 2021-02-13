@@ -17,7 +17,7 @@
         @error('name')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
-        <input type="text" name="name" id="name" value="{{old('name')}} class="form-control">
+        <input type="text" name="name" id="name" value="{{old('name')}} "class="form-control">
     </div>
 </div>
 <br>
@@ -29,7 +29,7 @@
         @error('phone')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
-        <input type="text" name="phone" id="phone"  value="{{old('phone')}} class="form-control">
+        <input type="text" name="phone" id="phone"  value="{{old('phone')}}" class="form-control">
     </div>
 </div>
 <br>

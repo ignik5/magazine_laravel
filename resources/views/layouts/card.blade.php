@@ -1,7 +1,15 @@
 <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
         <div class="labels">
-            
+            @if($product->isnew())
+            <span class="badge badge-success">Новинка</span>
+            @endif
+            @if($product->isrecommend())
+            <span class="badge badge-warning">Рекомендуем</span>
+            @endif
+            @if($product->ishit())
+            <span class="badge badge-danger">Хит продаж</span>
+            @endif
             
                     </div>
                     @if($product->image!=null)
