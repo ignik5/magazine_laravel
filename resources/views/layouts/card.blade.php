@@ -25,7 +25,7 @@
                <button type="submit"  class="btn btn-primary" role="button">В корзину</button> 
                
             
-                  <a href="{{route('product',[$product->category->code, $product->code])}}"class="btn btn-default"role="button">Подробнее</a>
+                  <a href="{{route('product',[isset($category)? $category->code : $product->category->code, $product->code])}}"class="btn btn-default"role="button">Подробнее</a>
                   @csrf
                 </form>
         </div>

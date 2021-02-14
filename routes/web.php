@@ -27,17 +27,29 @@ Route::get('logout','Auth\LoginController@logout')->name('get-logout');
 Route::get('/', 'maincontroller@index')->name('index');
 Route::group([
     'middleware'=>'auth',
+], function () {
+    Route::group([
+        'prefix' => 'person',
+        'namespace' => 'Person',
+        'as' => 'person.',
+    ], function () {
+    Route::get('/orders', 'OrderController@index')->name('orders.index');
+    Route::get('/orders/{order}', 'OrderController@show')->name('orders.show');
+});
+Route::group([
     'namespace'=>'Admin',
     'prefix'=>'admin'
 
 ],function(){
     Route::group(['middleware'=>'is_admin'],function(){
 Route::get('order','OrderController@index')->name('order');
+
+Route::get('/orders/{order}', 'OrderController@show')->name('orders.show');
 });
 Route::resource('categories', 'CategoryController');
 
 Route::resource('products', 'productController');
-});
+});});
 
 
 

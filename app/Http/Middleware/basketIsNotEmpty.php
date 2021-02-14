@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App\Order;
+use App\Models\Order;
 
 class basketIsNotEmpty
 {

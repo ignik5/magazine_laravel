@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\product;
-use App\Category;
+use App\Models\Product;
+use App\Models\Category;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
@@ -56,7 +56,7 @@ class productController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\product  $product
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function show(product $product)
@@ -67,7 +67,7 @@ class productController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\product  $product
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function edit(product $product)
@@ -81,7 +81,7 @@ class productController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\productrequest  $request
-     * @param  \App\product  $product
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function update(productrequest $request, product $product)
@@ -107,7 +107,7 @@ class productController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\product  $product
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function destroy(product $product)

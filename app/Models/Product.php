@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Category;
-class product extends Model
+use App\Models\Category;
+class Product extends Model
 {
     
     protected $fillable=['code','image','name','category_id','price','description', 'hit', 'new','recommend'];
@@ -16,6 +16,20 @@ return Category::find($this->category_id);
        
      return $this->beLongsTo(Category::class);
     }
+
+
+    public function scopeHit($query){
+        return $query->where('hit',1);
+    }
+    public function scopeNew($query){
+        return $query->where('new',1);
+    }
+    public function scopeRecommend($query){
+        return $query->where('recommend',1);
+    }
+
+
+    
     public function getprice(){
         if (!is_null($this->pivot)){
             return $this->pivot->count*$this->price;

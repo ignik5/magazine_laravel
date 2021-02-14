@@ -1,9 +1,9 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\product;
+use App\Models\Product;
 class Category extends Model
 {
     protected $fillable=['code','name','image','description'];

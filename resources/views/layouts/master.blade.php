@@ -41,13 +41,17 @@
 
             <ul class="nav navbar-nav navbar-right">
                                 @guest
-                                    <li><a href="{{route('login')}}">Войти</a></li>
+                                    <li class="nav-item dropdown"><a id="navbarDropdown" class="dropdown-item" href="{{route('login')}}">Войти</a></li>
                                     @endguest
                                     @auth
-                                    <li><a href="{{route('order')}}">Панель администратора</a></li>
+                                    
+                                @if(Auth::user()->isAdmin()==1) 
+                                   <li  class="nav-item dropdown"><a id="navbarDropdown" class="dropdown-item" href="{{route('order')}}">Панель администратора</a></li>
+                @else
+                <li  class="nav-item dropdown"><a id="navbarDropdown" class="dropdown-item" href="{{route('person.orders.index')}}">Мои заказы</a></li>
+                @endif
                 
-                                    <li>
-                                        <a href="{{route('get-logout')}}">Выход</a></li>
+                <li  class="nav-item dropdown"><a id="navbarDropdown" class="dropdown-item" href="{{route('get-logout')}}">Выход</a></li>
                 @endauth
                             </ul>
         </div>

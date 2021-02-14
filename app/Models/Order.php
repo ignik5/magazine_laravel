@@ -1,9 +1,9 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\product;
+use App\Models\Product;
 use App\User;
 class Order extends Model
 {
@@ -17,6 +17,10 @@ $sum+=$product->getprice();
        }
        return($sum);
       
+   }
+  
+   public function scopeActive($query){
+       return $query->where('status', 1);
    }
    public function user(){
        return $this->belongsTo(User::class);
