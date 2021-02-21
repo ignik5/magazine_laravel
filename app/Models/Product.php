@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
+
+use Illuminate\Database\Eloquent\SoftDeletes;
 class Product extends Model
 {
-    
-    protected $fillable=['code','image','name','category_id','price','description', 'hit', 'new','recommend'];
+   
+    use SoftDeletes;
+    protected $fillable=['code','image','name','category_id','price','description', 'hit', 'new','recommend','count'];
     public function getCategory(){
 return Category::find($this->category_id);
 
@@ -16,7 +19,13 @@ return Category::find($this->category_id);
        
      return $this->beLongsTo(Category::class);
     }
+public function isAvailable(){
 
+    return !$this->trashed() && $this->count>0;
+}
+public function scopeByCode($query, $code){
+return $query->where('code',$code);
+}
 
     public function scopeHit($query){
         return $query->where('hit',1);

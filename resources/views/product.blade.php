@@ -4,7 +4,7 @@
 @section('content')
     
                            <h1>{{$product->name}}</h1>
-    <h2>{{$category->name}}</h2>
+    <h2>{{$product->category->name}}</h2>
     <p>Цена: <b>{{$product->price}}</b></p>
     @if($product->image!=null)
     <img src="{{ Storage::url($product->image) }}" height="240px">
@@ -13,8 +13,11 @@
     @endif
     <p>{{$product->description}}</p>
     <form action="{{route('basketadd',$product)}}" method="post">
-        <button type="submit"  class="btn btn-success" role="button">В корзину</button> 
-        
+        @if($product->isAvailable()) 
+        <button type="submit"  class="btn btn-primary" role="button">В корзину</button> 
+        @else
+             не доступен
+         @endif
      @csrf
          </form>
         </div>

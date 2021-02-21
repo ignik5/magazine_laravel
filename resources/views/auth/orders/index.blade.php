@@ -36,6 +36,7 @@
                     <td>{{ $order->fullprice() }} Руб.</td>
                     <td>
                         <div class="btn-group" role="group">
+                            @if(Auth::user()->isAdmin()==1) 
                             <a class="btn btn-success" type="button"
                 
                               
@@ -43,6 +44,15 @@
                                  
                         
                             >Открыть</a>
+                            @else
+                            <a class="btn btn-success" type="button"
+                
+                              
+                            href="{{ route('person.orders.show', $order) }}"
+                          
+                 
+                     >Открыть</a>
+                     @endif
                         </div>
                     </td>
                 </tr>
