@@ -7,9 +7,12 @@ use App\Models\Product;
 use App\User;
 class Order extends Model
 {
-   public function products(){
-       return $this->belongsToMany(product::class)->withPivot('count')->withTimestamps();
-   }
+    protected $fillable = ['user_id'];
+    
+    public function products()
+    {
+        return $this->belongsToMany(Product::class)->withPivot('count')->withTimestamps();
+    }
    public function fullprice(){
        $sum=0;
        foreach($this->products()->withTrashed()->get() as $product){
@@ -38,4 +41,5 @@ $sum+=$product->getprice();
      }
 
  }
+ 
 }

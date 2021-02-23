@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Product;
+use App\Classes\basket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,20 +14,22 @@ class BasketController extends Controller
 {
     public function basket()
     { 
-        $orderid = session('orderid');
-        if (!is_null($orderid)) {
-            $order = Order::findOrFail($orderid);
-        }
+        $order = (new Basket())->getOrder();
+        
         return view('basket', compact('order'));
     }
 
     public function basketconfirs(basketrequest $request)
     {
-        $orderid = session('orderid');
-        if (is_null($orderid)){
-            return redirect()->route('index');
+        $order = (new Basket())->getOrder();
+       
+        
+        $basket = new Basket();
+        $order = $basket->getOrder();
+        if (!$basket->countAvailable()){
+            session()->flash('warning', 'Товар  не доступен для заказа  в полном объеме ');
+     return redirect()->route('basket');
         }
-        $order = Order::find($orderid);
       
         $order->name = $request->name;
         $order->phone = $request->phone;
@@ -46,39 +49,28 @@ class BasketController extends Controller
 
     public function basketplace()
     {
-        $orderid = session('orderid');
-        if (is_null($orderid)) {
-            return redirect()->route('index');
+        $basket = new Basket();
+        $order = $basket->getOrder();
+        if (!$basket->countAvailable()){
+            session()->flash('warning', 'Товар  не доступен для заказа  в полном объеме ');
+     return redirect()->route('basket');
         }
-        $order = Order::find($orderid);
+         
+ 
         return view('basketplace', compact('order'));
     }
     
-    public function basketadd($productid){
-        $orderid = session('orderid');
-        if(is_null($orderid)){
-            $order = Order::create();
-            session(['orderid'=>$order->id]);
-        }
-        else{
-            $order= Order::find($orderid);
-
-        }
+    public function basketadd(product $product){
      
-        if($order->products->contains($productid)){
-    $pivotrow=$order->products()->where('product_id',$productid)->first()->pivot;
-    $pivotrow->count++;
-    $pivotrow->update();
-        }else{
-            $order->products()->attach($productid);
-        }
-        $product=product::find($productid);
-        if (Auth::check()) {
-            $order->user_id = Auth::id();
-            $order->save();
-        }
-        session()->flash('success', 'Добавлен товар  '.$product->name);
-   
+      
+        $result= (new Basket())->addproduct($product) ;
+      if ($result == true )
+      {
+          session()->flash('success', 'Добавлен товар  '.$product->name);
+     }
+     else {
+        session()->flash('warning', 'Товар '.$product->name.' в большем количестве не доступен для заказа ');
+     }
         return redirect()->route('basket');
     }
 
@@ -86,25 +78,13 @@ class BasketController extends Controller
 
       
 
-    public function basketremov($productid)
+    public function basketremov(product $product)
     {
-        $orderid = session('orderid');
-        if (is_null($orderid)) {
-            return redirect()->route('basket');
-        }
-        $order = Order::find($orderid);
+        (new Basket())->removeproduct($product) ;
+       
+       
 
-        if ($order->products->contains($productid)) {
-            $pivotrow = $order->products()->where('product_id', $productid)->first()->pivot;
-            if ($pivotrow->count < 2) {
-                $order->products()->detach($productid);
-            } else {
-                $pivotrow->count--;
-                $pivotrow->update();
-            }
-        }
-
-        $product = Product::find($productid);
+       
 
         session()->flash('warning', 'Удален товар  ' . $product->name);
 

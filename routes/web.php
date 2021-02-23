@@ -4,7 +4,7 @@ route::group([
     'prefix'=>'basket',
 ],
 function(){
- Route::post('/add/{id}', 'BasketController@basketadd' )->name('basketadd');
+ Route::post('/add/{product}', 'BasketController@basketadd' )->name('basketadd');
 route::group([
      'middleware'=>'basket_not_empty',
     
@@ -13,7 +13,7 @@ function(){
        Route::get('/','BasketController@basket')->name('basket');
        Route::get('/place','BasketController@basketplace')->name('basketplace');
       
-       Route::post('/remov/{id}', 'BasketController@basketremov' )->name('basketremov');
+       Route::post('/remov/{product}', 'BasketController@basketremov' )->name('basketremov');
        Route::post('/place','BasketController@basketconfirs')->name('basketconfirs');
 
 });
