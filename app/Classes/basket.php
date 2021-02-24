@@ -91,11 +91,18 @@ public function addproduct(product $product)
 return true;
  
 }
-public function countAvailable()
+public function countAvailable($updateCount = false)
 {
    foreach($this->order->products as $orderProduct){
-   if( $orderProduct->count < $this->piv($orderProduct)->count)
+   if( $orderProduct->count < $this->piv($orderProduct)->count){
    return false;
+   }
+   if($updateCount){
+       $orderProduct->count-=$this->piv($orderProduct)->count;
+      }
+   }
+   if($updateCount){
+    $this->order->products->map->save();
    }
     return true;
 }

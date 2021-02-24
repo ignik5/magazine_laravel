@@ -34,6 +34,18 @@
 </div>
 <br>
 <br>
+@guest
+<label for="email" class="control-label col-lg-offset-3 col-lg-2">Email </label>
+<div class="col-lg-4">
+    @error('email')
+    <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
+    <input type="text" name="email" id="email"  value="{{old('email')}}" class="form-control">
+</div>
+</div>
+@endguest
+<br>
+<br>
                            
 @csrf
         <input type="submit" class="btn btn-success" value="Подтвердите заказ">

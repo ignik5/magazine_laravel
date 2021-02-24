@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\order;
+use App\Models\Order;
 class OrderController extends Controller
 {
     public function index(){
-        $orders = order::active()->paginate(8);
+        $orders = Order::active()->paginate(8);
        
        return view('auth.orders.index',compact('orders'));
     }

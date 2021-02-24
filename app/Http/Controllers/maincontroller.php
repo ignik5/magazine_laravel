@@ -42,7 +42,7 @@ class maincontroller extends Controller
     }
 
     public function product($category, $productcode) {
-      $product=product::withTrashed()->byCode($productcode)->first();
+      $product=product::withTrashed()->byCode($productcode)->firstOrFail();
     
  
   
