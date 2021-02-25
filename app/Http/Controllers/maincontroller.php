@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Subscription;
 use Illuminate\Http\Request;
+use App\Http\Requests\SubscriptionRequest;
 use App\Models\Category;
 use App\Models\Product;
 
@@ -27,7 +28,14 @@ class maincontroller extends Controller
         $products=$productsquery->paginate(6)->withPath("?". $request->getQueryString());
         return view('index',compact('products'));
     }
-
+      public function subscrib(SubscriptionRequest $request,Product $product)
+    {
+      Subscription::create([
+        'email'=>$request->email,
+        'product_id'=>$product->id,
+       ] );
+    return redirect()->back()->with('success', 'Спасибо, мы сообщим вам о появлении товара');
+     }
     
     public function categories(){
   

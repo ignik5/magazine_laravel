@@ -60,3 +60,4 @@ Route::get('/{category}', 'maincontroller@category')->name('category');
  
 
 Route::get('/{category}/{product?}','maincontroller@product')->name('product');
+Route::post('subscribtion/{product}', 'maincontroller@subscrib')->name('subscrib');

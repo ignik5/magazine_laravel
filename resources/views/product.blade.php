@@ -12,14 +12,30 @@
     <img src="http://internet-shop.tmweb.ru/storage/products/iphone_x.jpg">
     @endif
     <p>{{$product->description}}</p>
-    <form action="{{route('basketadd',$product)}}" method="post">
         @if($product->isAvailable()) 
+        
+    <form action="{{route('basketadd',$product)}}" method="post">
         <button type="submit"  class="btn btn-primary" role="button">В корзину</button> 
+        @csrf
+    </form>
         @else
              не доступен
+             <br>
+             <span>Cообщить мне, когда товар появится в наличии:</span>
+           <div class="warning">
+            @if($errors->get('email'))
+            {!!$errors->get('email')[0]!!}
+            @endif
+           </div>
+             <form method ="POST" action="{{route('subscrib', $product)}}">
+                 @csrf
+                 <input type="text" name="email">
+                
+                <button type="submit">Отправить</button>
+
+             </form>
          @endif
-     @csrf
-         </form>
+    
         </div>
 
 @endsection
