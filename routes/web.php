@@ -1,4 +1,7 @@
 <?php
+Route::middleware(['set_locale'])->group(function(){
+
+
 route::group([
    
     'prefix'=>'basket',
@@ -23,6 +26,7 @@ Auth::routes([
     'confirm'=>false,
     'verify'=>false,
 ]);
+route::get('locale/{locale}','maincontroller@changelocale')->name('locale');
 Route::get('logout','Auth\LoginController@logout')->name('get-logout');
 Route::get('/', 'maincontroller@index')->name('index');
 Route::group([
@@ -61,3 +65,7 @@ Route::get('/{category}', 'maincontroller@category')->name('category');
 
 Route::get('/{category}/{product?}','maincontroller@product')->name('product');
 Route::post('subscribtion/{product}', 'maincontroller@subscrib')->name('subscrib');
+
+
+
+});

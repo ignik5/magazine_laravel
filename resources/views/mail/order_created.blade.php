@@ -1,5 +1,5 @@
 <p>Уважаемый {{$name}}</p>
-<p>Ваш заказ на сумму {{ $fullsum }} создан</p>
+<p>@lang('mail/ordercreated.your_order') {{ $fullsum }} создан</p>
 <table>
     <tbody>
         @foreach($order->products as $product){

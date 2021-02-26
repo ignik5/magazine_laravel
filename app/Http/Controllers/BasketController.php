@@ -44,7 +44,7 @@ class BasketController extends Controller
    
         if ($success) {
           
-            session()->flash('success', 'Ваш заказ принят в обработку!');
+            session()->flash('success', __('basket.your_order_confirmed'));
         } else {
             session()->flash('warning', 'Случилась ошибка');
         }
