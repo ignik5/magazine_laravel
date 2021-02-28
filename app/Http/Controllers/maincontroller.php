@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\SubscriptionRequest;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Currency;
 use App;
 use App\Http\Requests\productsFilter;
 class maincontroller extends Controller
@@ -66,6 +67,10 @@ class maincontroller extends Controller
           $currentlocale = App::getLocale();
          return redirect()->back();
    }
-   
+   public function changecurrency($currencyCode){
+    $currency = Currency::byCode($currencyCode)->firstOrFail();
+    session (['currency' => $currency->code]);
+    return redirect()->back();
+   }
 
 }

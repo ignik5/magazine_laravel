@@ -35,8 +35,9 @@ class BasketController extends Controller
         $order->name = $request->name;
         $order->phone = $request->phone;
         
-        $email = Auth::check() ? Auth::check()->email : $request->email;
-        
+    
+        $email = Auth::check() ? Auth::user()->email : $request->email;
+      
         $order->status=1;
         $basket->countAvailable(true);
         Mail::to($email)->send(new OrderCreate($order->name, $order));

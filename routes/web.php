@@ -27,6 +27,8 @@ Auth::routes([
     'verify'=>false,
 ]);
 route::get('locale/{locale}','maincontroller@changelocale')->name('locale');
+
+route::get('currency/{currencyCode}','maincontroller@changecurrency')->name('currency');
 Route::get('logout','Auth\LoginController@logout')->name('get-logout');
 Route::get('/', 'maincontroller@index')->name('index');
 Route::group([

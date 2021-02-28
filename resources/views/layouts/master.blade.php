@@ -9,8 +9,10 @@
     <title>@lang('main.online_shop'): @yield('title')</title>
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <script src="/public/js/jquery.min.js"></script>
+    <script src="/public/js/bootstrap.min.js"></script>
+    <script src="/public/js/bootstrap.js"></script>
+    <script src="/public/js/app.js"></script>
     <link href="/public/css/bootstrap.min.css" rel="stylesheet">
     <link href="/public/css/starter-template.css" rel="stylesheet">
 </head>
@@ -28,15 +30,18 @@
                 <li ><a href="{{route('basket')}}">@lang('main.Basket')</a></li>
               {{--  <li class="active"><a href="{{route('index')}}">Сбросить проект в начальное состояние</a></li>
               --}}  <li><a href="{{route('locale',__('main.set_lang'))}}">@lang('main.set_lang')</a></li>
-  {{-- 
+
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">₽<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                                                    <li><a href="http://internet-shop.tmweb.ru/currency/RUB">₽</a></li>
-                                                    <li><a href="http://internet-shop.tmweb.ru/currency/USD">$</a></li>
-                                                    <li><a href="http://internet-shop.tmweb.ru/currency/EUR">€</a></li>
-                                            </ul>
-                </li>--}}
+               
+                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ App\Services\currencyconversion::getCurrencySymbol()}}<span class="caret"></span></a>
+               <ul class="dropdown-menu">
+                       
+                        @foreach (App\Services\currencyconversion::getCurrencies() as $currency)
+                        <li><a href="{{route('currency', $currency->code)}}">{{$currency->Symbol}}</a></li>
+                                                    
+                        @endforeach
+                                            </ul>      
+                </li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">

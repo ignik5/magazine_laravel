@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
 use App\Models\Traits\Translatable;
+use App\Services\currencyconversion;
 use Illuminate\Database\Eloquent\SoftDeletes;
 class Product extends Model
 {
@@ -37,8 +38,11 @@ return $query->where('code',$code);
         return $query->where('recommend',1);
     }
 
-
-    
+    public function getPriceAttribute($value){
+     return round(currencyconversion::convert($value),2);
+     
+    }
+  
     public function getprice(){
         if (!is_null($this->pivot)){
             return $this->pivot->count*$this->price;

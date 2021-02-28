@@ -5,7 +5,7 @@
     
                            <h1>{{$product->__('name')}}</h1>
     <h2>{{$product->category->__('name')}}</h2>
-    <p>Цена: <b>{{$product->price}}</b></p>
+    <p>Цена: <b>{{$product->price}} {{ App\Services\currencyconversion::getCurrencySymbol()}}</b></p>
     @if($product->image!=null)
     <img src="{{ Storage::url($product->image) }}" height="240px">
     @else
