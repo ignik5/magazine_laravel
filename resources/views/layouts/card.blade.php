@@ -18,7 +18,7 @@
                     <img src="http://internet-shop.tmweb.ru/storage/products/iphone_x.jpg">
                     @endif
         <div class="caption">
-            <h3>{{$product->name}}</h3>
+            <h3>{{$product->__('name')}}</h3>
             <p>{{$product->price}}₽</p>
             
            <form action="{{route('basketadd',$product)}}" method="post">

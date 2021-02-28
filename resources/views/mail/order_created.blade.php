@@ -14,8 +14,8 @@
                                 @else
                                 <img height="56px" src="http://internet-shop.tmweb.ru/storage/products/iphone_x.jpg">
                                 @endif
-                              <h1> {{$product->name}}</h1>
-                              <p> {{$product->description}}</p>
+                              <h1> {{$product->__('name')}}</h1>
+                              <p> {{$product->__('description')}}</p>
                             </a>
                         </td>
                         <td><span class="badge">{{$product->pivot->count}}</span>

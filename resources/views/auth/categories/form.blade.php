@@ -47,8 +47,17 @@
                                 value="{{old('name', isset($category)?$category->name: null) }} ">
                             </div>
                         </div>
-
-                     
+<br>
+                        <div class="input-group row">
+                            <label for="name_en" class="col-sm-2 col-form-label">Название_en: </label>
+                            <div class="col-sm-6">
+                                @error('name_en')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                                <input type="text" class="form-control" name="name_en" id="name_en"
+                                value="{{old('name_en', isset($category)?$category->name_en: null) }} ">
+                            </div>
+                        </div>
 
                             <br>
                         <div class="input-group row">
@@ -61,8 +70,23 @@
                                       rows="7">{{old('description', isset($category)?$category->description: null) }}</textarea>
                             </div>
                         </div>
-                        <br>
+                       
+                      
 
+                     
+
+                            <br>
+                        <div class="input-group row">
+                            <label for="description_en" class="col-sm-2 col-form-label">Описание_en: </label>
+                            <div class="col-sm-6">
+                                @error('description_en')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+							<textarea name="description_en" id="description_en" cols="72"
+                                      rows="7">{{old('description_en', isset($category)?$category->description_en: null) }}</textarea>
+                            </div>
+                        </div>
+                        <br>
                             
                         <div class="input-group row">
                             <label for="image" class="col-sm-2 col-form-label">Картинка: </label>

@@ -13,10 +13,10 @@
                 @else
                 <img src="http://internet-shop.tmweb.ru/storage/products/iphone_x.jpg">
                 @endif
-                <h2>{{$category->name}}</h2>
+                <h2>{{$category->__('name')}}</h2>
             </a>
             <p>
-                {{$category->description}} </p>
+                {{$category->__('description')}} </p>
         </div>
         @endforeach
          

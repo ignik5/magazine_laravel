@@ -27,7 +27,7 @@
                                     @else
                                     <img height="56px" src="http://internet-shop.tmweb.ru/storage/products/iphone_x.jpg">
                                     @endif
-                                   {{$product->name}}
+                                   {{$product->__('name')}}
                                 </a>
                             </td>
                             <td><span class="badge">{{$product->pivot->count}}</span>

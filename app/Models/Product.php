@@ -4,13 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
-
+use App\Models\Traits\Translatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 class Product extends Model
 {
-   
+    use Translatable;
     use SoftDeletes;
-    protected $fillable=['code','image','name','category_id','price','description', 'hit', 'new','recommend','count'];
+    protected $fillable=['code','image','name_en', 'description_en','name','category_id','price','description', 'hit', 'new','recommend','count'];
     public function getCategory(){
 return Category::find($this->category_id);
 

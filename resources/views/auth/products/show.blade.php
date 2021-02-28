@@ -27,10 +27,18 @@
                 <td>Название</td>
                 <td>{{ $product->name }}</td>
             </tr>
+            <tr>
+                <td>Название_en</td>
+                <td>{{ $product->name_en }}</td>
+            </tr>
           
             <tr>
                 <td>Описание</td>
                 <td>{{ $product->description }}</td>
+            </tr>
+            <tr>
+                <td>Описание_en</td>
+                <td>{{ $product->description_en }}</td>
             </tr>
         
             <tr>

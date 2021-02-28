@@ -23,9 +23,9 @@
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li ><a href="{{route('index')}}">@lang('main.all_products')</a></li>
-                <li ><a href="{{route('categories')}}">Категории</a>
+                <li ><a href="{{route('categories')}}">@lang('main.Categories')</a>
                 </li>
-                <li ><a href="{{route('basket')}}">В корзину</a></li>
+                <li ><a href="{{route('basket')}}">@lang('main.Basket')</a></li>
               {{--  <li class="active"><a href="{{route('index')}}">Сбросить проект в начальное состояние</a></li>
               --}}  <li><a href="{{route('locale',__('main.set_lang'))}}">@lang('main.set_lang')</a></li>
   {{-- 
