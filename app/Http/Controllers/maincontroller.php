@@ -14,6 +14,7 @@ class maincontroller extends Controller
     public function index(productsFilter $request){
       //  dd($request->all());
     // \ Debugbar::info($request);
+ 
       $productsquery=product::with('category');
       if($request->filled('price_from')){
         $productsquery->where('price', '>=', $request->price_from );

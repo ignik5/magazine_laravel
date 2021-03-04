@@ -2,6 +2,7 @@
 namespace App\Models\Traits;
 
 use Illuminate\Support\Facades\App;
+use Exception;
 trait Translatable
 {
     protected $defaultLocale = 'ru';

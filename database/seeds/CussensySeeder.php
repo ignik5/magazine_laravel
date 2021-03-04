@@ -17,22 +17,22 @@ class CussensySeeder extends Seeder
             [
                 'code'=>'RUB',
                 'Symbol'=>'₽',
-                'is_main'=>'1',
+                'is_main'=>1,
                 'rate'=>1,
 
         ],
         [
             'code'=>'USD',
             'Symbol'=>'$',
-            'is_main'=>'0',
-            'rate'=>75,
+            'is_main'=>0,
+            'rate'=>0,
 
         ],
         [
             'code'=>'EUR',
             'Symbol'=>'€',
-            'is_main'=>'0',
-            'rate'=>90,
+            'is_main'=>0,
+            'rate'=>0,
 
         ],
         ]);
