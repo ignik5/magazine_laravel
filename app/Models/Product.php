@@ -18,15 +18,19 @@ return Category::find($this->category_id);
     }
     public function category(){
        
-     return $this->beLongsTo(Category::class);
+    return $this->beLongsTo(Category::class);
     }
-public function isAvailable(){
+    public function skus()
+    {
+    return $this->hasMany(Sku::class);
+    }
+    public function isAvailable(){
 
     return !$this->trashed() && $this->count>0;
-}
-public function scopeByCode($query, $code){
-return $query->where('code',$code);
-}
+    }
+    public function scopeByCode($query, $code){
+     return $query->where('code',$code);
+    }
 
     public function scopeHit($query){
         return $query->where('hit',1);
@@ -36,6 +40,10 @@ return $query->where('code',$code);
     }
     public function scopeRecommend($query){
         return $query->where('recommend',1);
+    }
+    public function properties()
+    {
+        return $this->belongsToMany(Property::class);
     }
 
     public function getPriceAttribute($value){
