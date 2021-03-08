@@ -28,6 +28,7 @@ class maincontroller extends Controller
       }
     }
         $products=$productsquery->paginate(6)->withPath("?". $request->getQueryString());
+
         return view('index',compact('products'));
     }
       public function subscrib(SubscriptionRequest $request,Product $product)
@@ -39,10 +40,9 @@ class maincontroller extends Controller
     return redirect()->back()->with('success', 'Спасибо, мы сообщим вам о появлении товара');
      }
     
-    public function categories(){
-  
-        $categories = Category::get();
-        return view('categories', compact('categories'));
+    public function categories()
+    {
+        return view('categories');
     }
     public function category($code){
         $category= Category::where('code',$code)->first();

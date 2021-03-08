@@ -7,14 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>@lang('main.online_shop'): @yield('title')</title>
-
+ 
+    <link href="/public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/public/css/starter-template.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <link href="/public/css/style.css" rel="stylesheet">
     <script src="/public/js/jquery.min.js"></script>
     <script src="/public/js/bootstrap.min.js"></script>
     <script src="/public/js/bootstrap.js"></script>
     <script src="/public/js/app.js"></script>
-    <link href="/public/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/public/css/starter-template.css" rel="stylesheet">
+
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -33,10 +35,10 @@
 
                 <li class="dropdown">
                
-                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ App\Services\currencyconversion::getCurrencySymbol()}}<span class="caret"></span></a>
+                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{$currencySimbol}}<span class="caret"></span></a>
                <ul class="dropdown-menu">
                        
-                        @foreach (App\Services\currencyconversion::getCurrencies() as $currency)
+                        @foreach ($currencies as $currency)
                         <li><a href="{{route('currency', $currency->code)}}">{{$currency->Symbol}}</a></li>
                                                     
                         @endforeach
@@ -75,5 +77,28 @@
          
         </div>
 </div>
+<footer>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6"><p>Карегории товаров</p>
+                <ul>
+                    @foreach ($categories as $category)
+                    <li><a href = "{{route('category',$category->code)}}">{{$category->__('name')}}</a></li>
+                    @endforeach
+                 
+                </ul>
+            </div>
+            <div class="col-lg-6"><p>Cамые популярные товары</p>
+                <ul>
+                    @foreach ($bestProductIds as $bestProduct)
+                    <li><a href = "{{route('product',[$bestProduct->category->code, $bestProduct->code])}}">{{$bestProduct->name}}</a></li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+ 
+    </div>
+</footer>
 </body>
 </html>
