@@ -34,6 +34,9 @@
                     <li><a href="{{route('categories.index')}}">Категории</a></li>
                     <li><a href="{{route('products.index')}}">Товары</a></li>
                     <li><a href="{{route('order')}}">Заказы</a></li>
+                    <li><a href="{{route('properties.index')}}">Свойства</a></li>
+                {{-- <li><a href="{{route('property-options.index')}}">Варианты свойств</a></li>--}}
+                    
                                     </ul>
 
     

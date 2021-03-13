@@ -53,7 +53,8 @@ Route::get('order','OrderController@index')->name('order');
 Route::get('/orders/{order}', 'OrderController@show')->name('orders.show');
 });
 Route::resource('categories', 'CategoryController');
-
+Route::resource('properties','PropertyController');
+Route::resource('properties/{property}/property-options','PropertyOptionController');
 Route::resource('products', 'productController');
 });});
 
